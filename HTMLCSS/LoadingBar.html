@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Bar</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            /* box-sizing: border-box; */
+        }
+        body{
+            margin:0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: black;
+            color:lightgray;
+            font-family: cursive;
+        }
+        .container{
+            text-align: center;
+            width: 300px;
+            position: relative;
+        }
+        .counter{
+            font-size: 40px;
+        }
+        .loading-bar-back{
+            position: absolute;
+            height: 8px;
+            background-color:orangered ;
+            width: 100%;
+            border-radius: 5px;
+            border:none;
+        }
+        .loading-bar-front{
+            position: absolute;
+            height: 8px;
+            background-color:  lightgray;
+            width: 0%;
+            border-radius: 5px;
+            border:none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Loading</h1>
+        <div class="counter">0%</div>
+        <hr class="loading-bar-back">
+        <hr class="loading-bar-front"> 
+    </div>
+    <script>
+        const counterE1 = document.querySelector('.counter');
+        const barE1 = document.querySelector('.loading-bar-back');
+        let idx = 0 ;
+        updateNum();
+        function updateNum(){
+            counterE1.innerHTML= idx+"%";
+            barE1.style.width= idx+"%";
+            idx++;
+            if(idx<101){
+                setTimeout(updateNum,20);
+            }
+        }
+    </script>
+</body>
+</html>
